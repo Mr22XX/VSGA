@@ -88,8 +88,86 @@
     <!-- end jumlah paket -->
      
     <!-- start btn submit -->
-      <button type="submit" class="btn btn-success">Kirim</button>
+      <button onclick="showModal()" type="button" class="btn btn-success">Kirim</button>
     <!-- end btn submit -->
+
+    <!-- start modal -->
+    <div class="modal" id="mymodal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pesananan</h5>
+      </div>
+      <div class="modal-body">
+        <h5>Nama :</h5>
+        <p id="ketNama"></p>
+        <h5>Alamat :</h5>
+        <p id="ketAlamat"></p>
+        <h5>Tujuan :</h5>
+        <p id="ketTujuan"></p>
+        <h5>Jenis Kelamin :</h5>
+        <p id="ketGender"></p>
+        <h5>Jumlah Paket :</h5>
+        <p id="ketPaket"></p>
+        <h5 style="color: red;">Total :</h5>
+        <p id="total"></p>
+      </div>
+      <div class="modal-footer">
+        <button onclick="back()" type="button" class="btn btn-secondary" data-bs-dismiss="modal" >Back</button>
+        <button type="submit" class="btn btn-primary">Kirim</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- end modal -->
 
   </form>
 </div>
+
+<script>
+  const showModal = () =>{
+    const nama = document.getElementById("nama").value
+    const alamat  = document.getElementById("alamat").value;
+    const tujuan = document.getElementById("tujuan").value
+    const pria =document.getElementById("pria")
+    const wanita =document.getElementById("wanita")
+    const paket =document.getElementById("jumlahPaket").value
+    const total =document.getElementById("total");
+    
+    if(nama === '' || alamat === ''){
+      return;
+    }
+
+      const ketNama =document.getElementById("ketNama")
+      ketNama.innerText = nama;      
+      
+      const ketAlamat =document.getElementById("ketAlamat")
+      ketAlamat.innerText =alamat;
+
+      const ketTujuan =document.getElementById("ketTujuan")
+      ketTujuan.innerText =tujuan
+
+      const ketGender =document.getElementById("ketGender")
+      if(pria.checked){
+        ketGender.innerText = pria.value;
+      }
+      else if(wanita.checked){
+        ketGender.innerText =wanita.value;
+      }
+
+      const ketPaket =document.getElementById("ketPaket")
+      ketPaket.innerText =paket;
+
+      total.innerText = "Rp. "  + paket * 500000 
+
+      const myModal = new bootstrap.Modal(document.getElementById('mymodal'));
+      myModal.show();
+
+      
+  }
+
+  const back = () =>{
+    window.location.href = "pesanPaket.php";
+    window.location.reload();
+  }
+</script>
