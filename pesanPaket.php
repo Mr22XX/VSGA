@@ -37,7 +37,7 @@
     <!-- start input nama -->
     <div class="form-group">
       <label for="nama">Nama</label>
-      <input id="nama" class="form-control" type="text" name="nama" required>
+      <input id="nama" class="form-control" type="text" name="nama"  required>
     </div>
     <!-- end input nama -->
 
@@ -96,7 +96,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Pesananan</h5>
+        <h5 class="modal-title">Pesanan</h5>
       </div>
       <div class="modal-body">
         <h5>Nama :</h5>
@@ -167,7 +167,6 @@
   }
 
   const back = () =>{
-    window.location.href = "pesanPaket.php";
-    window.location.reload();
+    window.location.replace("index.php?page=pesanPaket");
   }
 </script>

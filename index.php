@@ -139,11 +139,11 @@ $page = $_GET['page'] ?? "";
     <!-- end content -->
 
     <!-- start footer -->
-     <footer class="position-absolute bottom-0 w-100">
+    <footer class="position-absolute bottom-0 w-100">
          <div class="card-footer  bg-dark text-white text-center">
              VSGA-Rayhan Muhammad A
         </div>
-        </footer>
+    </footer>
     <!-- end footer -->
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
