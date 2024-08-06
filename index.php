@@ -1,5 +1,10 @@
 <?php
 $page = $_GET['page'] ?? "";
+
+function rupiah($angka){
+    $hasil = "Rp ". number_format($angka, "2", "," , ".");
+    return $hasil;
+}
 ?>
 
 <!DOCTYPE html>
@@ -9,6 +14,7 @@ $page = $_GET['page'] ?? "";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExploreIndo</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/DataTables/datatables.min.css">
 </head>
 <body>
     <!-- start header -->
@@ -22,12 +28,11 @@ $page = $_GET['page'] ?? "";
     <!-- end header -->
         
     <!-- start navbar -->
-    <nav class="nav nav-fill  bg-dark ">
-        <li class="nav-item">
+    <nav class="  bg-dark d-flex justify-content-center align-items-center ">
+            <li class="nav-item d-flex">
             <a class="nav-link text-white" href="?page=home">Home</a>
-        </li>
-        <li class="nav-item">
             <a class="nav-link text-white" href="?page=pesanPaket">Pesan Paket</a>
+            <a class="nav-link text-white" href="?page=tabelpesanan">Lihat Pesanan</a>
         </li>
     </nav>
     <!-- end navbar -->
@@ -39,89 +44,74 @@ $page = $_GET['page'] ?? "";
                 <?php
                     if($page == "pesanPaket"){
                         require "pesanPaket.php";
-                    }else{
+                    }
+                    else if($page == "tabelpesanan"){
+                        require "tabelPesanan.php";
+                    }
+                    
+                    else{
 
                     
                 ?>
                 <h4>Destinasi Yang Tersedia</h4>
                 <div class="row">
-                    <div class="col-3 pb-2">
+                    <div class="col-4 pb-2">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                            <img src="./assets/bali.jpg" class="card-img-top" alt="..." height="200em">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Bali</h5>
+                                <p class="card-text text-danger">Harga : Rp. 1.000.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                            <img src="./assets/bkl.jpg" class="card-img-top" alt="..." height="200em">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Bengkulu</h5>
+                                <p class="card-text text-danger">Harga : Rp. 500.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                            <img src="./assets/bdg.jpg" class="card-img-top" alt="..." height="200em">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Bandung</h5>
+                                <p class="card-text text-danger">Harga : Rp. 800.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                            <img src="./assets/sby.jpg" class="card-img-top" alt="..." height="200em">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Surabaya</h5>
+                                <p class="card-text text-danger">Harga : Rp. 900.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
-                    <div class="col-3">
+                    <div class="col-4">
                         <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                            <img src="./assets/jgj.jpeg" class="card-img-top" alt="..." height="200em">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Yogyakarta</h5>
+                                <p class="card-text text-danger">Harga : Rp. 950.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
+                    <div class="col-4">
+                        <div class="card" style="width: 18rem;" height="200em">
+                            <img src="./assets/smg.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>    
-                    <div class="col-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src="https://img.freepik.com/free-vector/workplace-with-checklist_23-2147609104.jpg?size=626&ext=jpg&ga=GA1.1.1056261084.1721702025&semt=ais_hybrid" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <h5 class="card-title">Semarang</h5>
+                                <p class="card-text text-danger">Harga : Rp. 850.000</p>
+                                <a href="?page=pesanPaket" class="btn btn-primary">Order Disini</a>
                             </div>
                         </div>
                     </div>    
@@ -145,9 +135,40 @@ $page = $_GET['page'] ?? "";
         </div>
     </footer>
     <!-- end footer -->
-
+<!-- js untuk modal -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+<!-- js untuk datatables -->
+<script src="./assets/DataTables/datatables.min.js"></script>
+
+<!-- js untuk bootstrap -->
 <script src="./js/bootstrap.min.js"></script>
+
+<script>
+    new DataTable('#myTable', {
+    layout: {
+        topStart: {
+            buttons: [
+                {
+                    extend : 'copy',
+                    className : 'btn btn-primary'
+
+                }, 
+                {
+                    extend: 'excel',
+                    className : 'btn btn-primary'
+
+                },
+                {
+                    extend : 'pdfHtml5',
+                    orientation : 'landscape',
+                    className : 'btn btn-primary'
+                }
+            ]
+        }
+    }
+});
+</script>
 
 
 </body>
