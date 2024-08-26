@@ -30,7 +30,6 @@ projek ini bertujuan untuk membantu pengguna untuk memesan paket pariwisata deng
 
 ### Prerequisites
 
-Sebutkan perangkat lunak atau alat yang diperlukan untuk menjalankan proyek ini.
 
 - Visual Studio Code
 - XAMPP
